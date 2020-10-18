@@ -8,7 +8,10 @@ def main():
     sentence = input("What secret message you want to give?\n")
     lis = sentence.split()
     for i in range(len(lis)):
-        if (lis[i].lower().startswith('a')) or (lis[i].lower().startswith('e')) or (lis[i].lower().startswith('i')) or (
+        if any(j.isdigit() for j in lis[i]):
+            continue
+        elif (lis[i].lower().startswith('a')) or (lis[i].lower().startswith('e')) or (
+                lis[i].lower().startswith('i')) or (
                 lis[i].lower().startswith('o')) or (lis[i].lower().startswith('u')):
             lis[i] = changeWithVowel(lis[i])
         else:
@@ -23,7 +26,7 @@ def changeWithVowel(sentence):
 
     :rtype: String object
     """
-    return sentence + "way"
+    return sentence.lower() + "way"
 
 
 def changeWithConsonant(sentence):
@@ -33,8 +36,8 @@ def changeWithConsonant(sentence):
 
     :rtype: object
     """
-    a = sentence[0] + "ay"
-    return sentence[1:] + a
+    a = sentence[0].lower() + "ay"
+    return sentence[1:].lower() + a
 
 
 if __name__ == '__main__':
