@@ -3,6 +3,8 @@ Python code to Convert English Sentences to Pig Latin
 """
 import sys
 
+vowels = 'aeiou'
+
 
 def main():
     sentence = input("What secret message you want to give?\n")
@@ -10,9 +12,7 @@ def main():
     for i in range(len(lis)):
         if any(j.isdigit() for j in lis[i]):
             continue
-        elif (lis[i].lower().startswith('a')) or (lis[i].lower().startswith('e')) or (
-                lis[i].lower().startswith('i')) or (
-                lis[i].lower().startswith('o')) or (lis[i].lower().startswith('u')):
+        elif lis[i].lower() in vowels:
             lis[i] = changeWithVowel(lis[i])
         else:
             lis[i] = changeWithConsonant(lis[i])
